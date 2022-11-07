@@ -57,24 +57,24 @@ def pp(i,file,colours_):
 
 def dialog():
     global root, path, btn3,file
-    palette = simpledialog.askinteger("Input", "What is the palette size?(default=20)",
+    palette = simpledialog.askinteger("Palette size", "What is the palette size?(default=20)",
                                 parent=root,minvalue=0, maxvalue=40)
     if palette is not None:
         palette = 20
 
-    stroke_scale = simpledialog.askinteger("Input", "What is stroke scale?(default=0)",
+    stroke_scale = simpledialog.askinteger("Stroke Scale", "What is stroke scale?(default=0)",
                                      parent=root,
                                      minvalue=0, maxvalue=100)
     if stroke_scale is not None:
         stroke_scale = 0
 
-    g_s_radius = simpledialog.askinteger("Input", "What is gradient smoothing radius?(default=0)",
+    g_s_radius = simpledialog.askinteger("smoothing Radius", "What is gradient smoothing radius?(default=0)",
                                    parent=root,
                                    minvalue=0, maxvalue=100)
     if g_s_radius is not None:
         g_s_radius = 0
 
-    l_image_size = simpledialog.askinteger("Input", "What is image size?(default=0)",
+    l_image_size = simpledialog.askinteger("Image Size", "What is image size?(default=0)",
                                    parent=root,
                                    minvalue=0, maxvalue=1080)
     if l_image_size is not None:
@@ -107,6 +107,9 @@ def select_image():
 
 # initialize the window toolkit along with the two image panels
 root = Tk()
+root.title("PointilistArt Maker")
+root.iconbitmap(r'favicon.ico')
+
 panelA = None
 panelB = None
 path = None
