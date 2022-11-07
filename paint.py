@@ -9,7 +9,7 @@ class Window(QMainWindow):
         super().__init__()
         global p_path
         print(p_path)
-        # p_path = "/Users/harish/Documents/PICTURES/vivo y51l/Screenshot/Screenshot_20190125_160422.png"
+        #p_path="C:/Users/Home/Pictures/figma-pic/new.jpg"
         pixmap = QPixmap(p_path)
         title = "Paint Pointlist details"
         top = 400
@@ -22,10 +22,10 @@ class Window(QMainWindow):
         self.setWindowTitle(title)
         self.setGeometry(top, left, width, height)
         self.setWindowIcon(QIcon(icon))
-        # self.image = QImage(self.size(), QImage.Format_RGB32)
+        self.image = QImage(self.size(), QImage.Format_RGB32)
         self.image = pixmap #Qt.white
         self.resize(self.image.width(), self.image.height())
-        # self.image.fill(Qt.white)
+      #  self.image.fill(Qt.white)
 
 
         self.drawing = False
@@ -51,45 +51,25 @@ class Window(QMainWindow):
         threepxAction = QAction( QIcon("icons/threepx.png"), "Brush Size", self)
         brushSize.addAction(threepxAction)
         threepxAction.triggered.connect(self.getInteger)
-        #
-        # fivepxAction = QAction(QIcon("icons/fivepx.png"), "5px", self)
-        # brushSize.addAction(fivepxAction)
-        # fivepxAction.triggered.connect(self.fivePixel)
-        #
-        # sevenpxAction = QAction(QIcon("icons/sevenpx.png"),"7px", self)
-        # brushSize.addAction(sevenpxAction)
-        # sevenpxAction.triggered.connect(self.sevenPixel)
-        #
-        # ninepxAction = QAction(QIcon("icons/ninepx.png"), "9px", self)
-        # brushSize.addAction(ninepxAction)
-        # ninepxAction.triggered.connect(self.ninePixel)
+        
+        fivepxAction = QAction(QIcon("icons/fivepx.png"), "5px", self)
+        brushSize.addAction(fivepxAction)
+        fivepxAction.triggered.connect(self.fivePixel)
+        
+        sevenpxAction = QAction(QIcon("icons/sevenpx.png"),"7px", self)
+        brushSize.addAction(sevenpxAction)
+        sevenpxAction.triggered.connect(self.sevenPixel)
+        
+        ninepxAction = QAction(QIcon("icons/ninepx.png"), "9px", self)
+        brushSize.addAction(ninepxAction)
+        ninepxAction.triggered.connect(self.ninePixel)
+        
+        choosecolorAction = QAction(QIcon("icons/black.png"), "Choose color", self)
+        choosecolorAction.setShortcut("Ctrl+B")
+        brushColor.addAction(choosecolorAction)
+        choosecolorAction.triggered.connect(self.color_picker)
 
-        blackAction = QAction(QIcon("icons/black.png"), "Choose color", self)
-        blackAction.setShortcut("Ctrl+B")
-        brushColor.addAction(blackAction)
-        blackAction.triggered.connect(self.color_picker)
-        #
-        #
-        # whitekAction = QAction(QIcon("icons/white.png"), "White", self)
-        # whitekAction.setShortcut("Ctrl+W")
-        # brushColor.addAction(whitekAction)
-        # whitekAction.triggered.connect(self.whiteColor)
-        #
-        #
-        # redAction = QAction(QIcon("icons/red.png"), "Red", self)
-        # redAction.setShortcut("Ctrl+R")
-        # brushColor.addAction(redAction)
-        # redAction.triggered.connect(self.redColor)
-        #
-        # greenAction = QAction(QIcon("icons/green.png"), "Green", self)
-        # greenAction.setShortcut("Ctrl+G")
-        # brushColor.addAction(greenAction)
-        # greenAction.triggered.connect(self.greenColor)
-        #
-        # yellowAction = QAction(QIcon("icons/yellow.png"), "Yellow", self)
-        # yellowAction.setShortcut("Ctrl+Y")
-        # brushColor.addAction(yellowAction)
-        # yellowAction.triggered.connect(self.yellowColor)
+        
 
 
     def mousePressEvent(self, event):
@@ -145,42 +125,27 @@ class Window(QMainWindow):
         if okPressed:
             self.brushSize = i
 
-    # def clear(self):
-    #     self.image.fill(Qt.white)
-    #     self.update()
+    def clear(self):
+        self.image.fill(Qt.white)
+        self.update()
 
 
-    # def threePixel(self):
-    #     self.brushSize = 3
-    #
-    # def fivePixel(self):
-    #     self.brushSize = 5
-    #
-    # def sevenPixel(self):
-    #     self.brushSize = 7
-    #
-    # def ninePixel(self):
-    #     self.brushSize = 9
+    def threePixel(self):
+        self.brushSize = 3
+    
+    def fivePixel(self):
+        self.brushSize = 5
+    
+    def sevenPixel(self):
+        self.brushSize = 7
+    
+    def ninePixel(self):
+        self.brushSize = 9
 
     def color_picker(self):
         color = QColorDialog.getColor()
         self.brushColor = color
-        # self.styleChoice.setStyleSheet("QWidget { background-color: %s}" % color.name())
 
-    # def blackColor(self):
-    #     self.brushColor = Qt.black
-    #
-    # def whiteColor(self):
-    #     self.brushColor = Qt.white
-    #
-    # def redColor(self):
-    #     self.brushColor = Qt.red
-    #
-    # def greenColor(self):
-    #     self.brushColor = Qt.green
-    #
-    # def yellowColor(self):
-    #     self.brushColor = Qt.yellow
 
 p_path = sys.argv[1]
 # print(ar[1])

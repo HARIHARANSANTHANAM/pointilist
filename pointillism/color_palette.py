@@ -42,6 +42,6 @@ class ColorPalette:
 
     def __len__(self):
         return len(self.colors)
-
+    
     def __getitem__(self, item):
         return self.colors[item]
